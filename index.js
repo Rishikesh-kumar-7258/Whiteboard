@@ -124,11 +124,13 @@ function changeCustomColor() {
 
 // Main function
 window.onload = function () {
+  // canvas event handling
   canvas.onmousedown = startDrawing;
   canvas.onmousemove = draw;
   canvas.onmouseup = stopDrawing;
   window.onresize = resizeCanvas;
 
+  // Another DOM event handling
   shapeSelector.onchange = changeShape;
   strokeWidthSelector.onchange = changeThickness;
   colorSelector.onchange = changeColor;
