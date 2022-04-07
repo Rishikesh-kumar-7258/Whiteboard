@@ -117,6 +117,7 @@ function toggleMode() {
   }
 }
 
+// function to select the custom color
 function changeCustomColor() {
   color = custom_color.value;
 }
