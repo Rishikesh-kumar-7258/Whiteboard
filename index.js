@@ -8,6 +8,7 @@ const colorSelector = document.getElementById("color");
 const closeLine = document.getElementById("closeLine");
 const navbar = document.querySelector("nav ul");
 const modeToggler = document.getElementById("modeToggler");
+const custom_color = document.getElementById("custom_color");
 
 // Variables
 var isDrawing = false;
@@ -116,6 +117,10 @@ function toggleMode() {
   }
 }
 
+function changeCustomColor() {
+  color = custom_color.value;
+}
+
 // Main function
 window.onload = function () {
   canvas.onmousedown = startDrawing;
@@ -126,6 +131,7 @@ window.onload = function () {
   shapeSelector.onchange = changeShape;
   strokeWidthSelector.onchange = changeThickness;
   colorSelector.onchange = changeColor;
+  custom_color.onchange = changeCustomColor;
   closeLine.onclick = toggleNavbar;
   modeToggler.onclick = toggleMode;
 };
