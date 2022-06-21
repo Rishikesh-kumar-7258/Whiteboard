@@ -4,11 +4,14 @@ const ctx = canvas.getContext("2d");
 const shapeSelector = document.getElementById("shape");
 const strokeWidthSelector = document.getElementById("strokeWidth");
 const colorSelector = document.getElementById("color");
+const closeLine = document.getElementById("closeLine");
+const navbar = document.querySelector("nav ul");
 
 var isDrawing = false;
 var shape = 0;
 var thickness = 1;
 var color = "#000000";
+var isNavbarVisible = true;
 
 function startDrawing(e) {
   if (shape === 0) {
@@ -53,6 +56,20 @@ function changeColor(e) {
   color = e.target.value;
 }
 
+function toggleNavbar() {
+  isNavbarVisible = !isNavbarVisible;
+
+  if (isNavbarVisible) {
+    navbar.classList.remove("hide");
+    closeLine.innerHTML = "&triangleleft;";
+  } else {
+    navbar.classList.add("hide");
+    closeLine.innerHTML = "&triangleright;";
+  }
+
+  resizeCanvas();
+}
+
 window.onload = function () {
   canvas.onmousedown = startDrawing;
   canvas.onmousemove = draw;
@@ -62,5 +79,6 @@ window.onload = function () {
   shapeSelector.onchange = changeShape;
   strokeWidthSelector.onchange = changeThickness;
   colorSelector.onchange = changeColor;
+  closeLine.onclick = toggleNavbar;
 };
 resizeCanvas();

@@ -21,6 +21,8 @@ main {
 
 canvas {
   background: #eeeeee;
+  border: 20px solid black;
+  box-shadow: inset 2px 2px 4px 4px black;
 }
 
 nav {
@@ -39,6 +41,7 @@ nav ul {
   list-style-type: none;
   padding: 0 10px;
   margin: 10px;
+  transition: all 0.4s linear;
 }
 
 #closeLine {
@@ -59,4 +62,8 @@ nav ul {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.hide {
+  display: none !important;
 }
