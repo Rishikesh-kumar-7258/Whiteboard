@@ -1,17 +1,31 @@
 const main = document.querySelector("main");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const shapeSelector = document.getElementById("shape");
+const strokeWidthSelector = document.getElementById("strokeWidth");
+const colorSelector = document.getElementById("color");
 
 var isDrawing = false;
+var shape = 0;
+var thickness = 1;
+var color = "#000000";
 
 function startDrawing(e) {
-  isDrawing = true;
+  if (shape === 0) {
+    isDrawing = true;
+  }
   ctx.beginPath();
+  ctx.lineWidth = thickness;
+  ctx.strokeStyle = color;
   ctx.moveTo(e.offsetX, e.offsetY);
 }
 
 function stopDrawing(e) {
   isDrawing = false;
+  if (shape === 2) {
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+  }
   ctx.closePath();
 }
 
@@ -27,11 +41,26 @@ function resizeCanvas() {
   ctx.canvas.height = main.clientHeight * 0.9;
 }
 
-resizeCanvas();
+function changeShape(e) {
+  shape = parseInt(e.target.value);
+}
+
+function changeThickness(e) {
+  thickness = parseInt(e.target.value);
+}
+
+function changeColor(e) {
+  color = e.target.value;
+}
 
 window.onload = function () {
   canvas.onmousedown = startDrawing;
-  canvas.onmouseup = stopDrawing;
   canvas.onmousemove = draw;
+  canvas.onmouseup = stopDrawing;
   window.onresize = resizeCanvas;
+
+  shapeSelector.onchange = changeShape;
+  strokeWidthSelector.onchange = changeThickness;
+  colorSelector.onchange = changeColor;
 };
+resizeCanvas();
