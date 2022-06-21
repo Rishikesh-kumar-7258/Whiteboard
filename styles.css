@@ -1,3 +1,10 @@
+:root {
+  --background-primary: #eeeeee;
+}
+
+.dark-mode {
+  --background-primary: #222222;
+}
 body {
   display: grid;
   grid-template-columns: auto 1fr;
