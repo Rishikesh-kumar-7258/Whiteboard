@@ -1,3 +1,4 @@
+// HTML DOM elements
 const main = document.querySelector("main");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -8,6 +9,7 @@ const closeLine = document.getElementById("closeLine");
 const navbar = document.querySelector("nav ul");
 const modeToggler = document.getElementById("modeToggler");
 
+// Variables
 var isDrawing = false;
 var shape = 0;
 var thickness = 1;
@@ -16,6 +18,7 @@ var isNavbarVisible = true;
 var startX, startY, endX, endY;
 var darkMode = false;
 
+// Function to start drawing
 function startDrawing(e) {
   if (shape === 0) {
     isDrawing = true;
@@ -28,16 +31,23 @@ function startDrawing(e) {
   startY = e.offsetY;
 }
 
+// Function to Stop Drawing
 function stopDrawing(e) {
   endX = e.offsetX;
   endY = e.offsetY;
 
   isDrawing = false;
+
+  // Drawing Rectangle
   if (shape === 1) {
     ctx.rect(startX, startY, endX - startX, endY - startY);
-  } else if (shape === 2) {
+  }
+  // Drawing Line
+  else if (shape === 2) {
     ctx.lineTo(endX, endY);
-  } else if (shape === 3) {
+  }
+  // Drawing circle
+  else if (shape === 3) {
     ctx.arc(
       (startX + endX) / 2,
       (startY + endY) / 2,
@@ -50,6 +60,7 @@ function stopDrawing(e) {
   ctx.closePath();
 }
 
+// Function to draw
 function draw(e) {
   if (isDrawing === true) {
     ctx.lineTo(e.offsetX, e.offsetY);
@@ -57,23 +68,28 @@ function draw(e) {
   }
 }
 
+// Function to resize Canvas
 function resizeCanvas() {
   ctx.canvas.width = main.clientWidth * 0.9;
   ctx.canvas.height = main.clientHeight * 0.9;
 }
 
+// Function to change shape type to draw
 function changeShape(e) {
   shape = parseInt(e.target.value);
 }
 
+// Function to change the thickness of line to draw
 function changeThickness(e) {
   thickness = parseInt(e.target.value);
 }
 
+// Function to change the color of line to draw
 function changeColor(e) {
   color = e.target.value;
 }
 
+// Function to show and hide navbar
 function toggleNavbar() {
   isNavbarVisible = !isNavbarVisible;
 
@@ -88,6 +104,7 @@ function toggleNavbar() {
   resizeCanvas();
 }
 
+// Function to draw toggle between dark mode and light mode
 function toggleMode() {
   document.querySelector("body").classList.toggle("dark-mode");
   darkMode = !darkMode;
@@ -99,6 +116,7 @@ function toggleMode() {
   }
 }
 
+// Main function
 window.onload = function () {
   canvas.onmousedown = startDrawing;
   canvas.onmousemove = draw;
