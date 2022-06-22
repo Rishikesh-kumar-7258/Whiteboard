@@ -12,15 +12,16 @@
 <body>
   <nav>
     <ul>
-      <li class="dropdown">
+      <li class="options">
         <label for="shape">Select Shape</label>
         <select name="shape" id="shape">
           <option value="0">Freehand</option>
-          <!-- <option value="1">Rectangle</option> -->
+          <option value="1">Rectangle</option>
           <option value="2">Line</option>
+          <option value="3">Circle</option>
         </select>
       </li>
-      <li class="dropdown">
+      <li class="options">
         <label for="strokeWidth">Select Thickness</label>
         <select name="strokeWidth" id="strokeWidth">
           <option value="1">1</option>
@@ -30,12 +31,20 @@
           <option value="5">5</option>
         </select>
       </li>
-      <li class="dropdown">
+      <li class="options">
         <label for="color">Colors</label>
-        <input type="color" name="color" id="color">
+        <select type="color" name="color" id="color">
+          <option value="#000000">Black</option>
+          <option value="#FFFFFF">White</option>
+          <option value="#FF0000">Red</option>
+          <option value="#00FF00">Green</option>
+          <option value="#0000FF">Blue</option>
+          <option value="#FFFF00">Yellow</option>
+        </select>
       </li>
-      <li>options</li>
-      <li>options</li>
+      <li class="options">
+        <button id="modeToggler">Dark Mode</button>
+      </li>
     </ul>
     <div id="closeLine">&triangleleft;</div>
   </nav>
