@@ -138,4 +138,6 @@ window.onload = function () {
   closeLine.onclick = toggleNavbar;
   modeToggler.onclick = toggleMode;
 };
+
+// first time resizing the width of canvas according the screen size
 resizeCanvas();
