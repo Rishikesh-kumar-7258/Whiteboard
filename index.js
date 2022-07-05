@@ -130,7 +130,7 @@ window.onload = function () {
   canvas.onmouseup = stopDrawing;
   window.onresize = resizeCanvas;
 
-  // Another DOM event handling
+  // other DOM event handling
   shapeSelector.onchange = changeShape;
   strokeWidthSelector.onchange = changeThickness;
   colorSelector.onchange = changeColor;
